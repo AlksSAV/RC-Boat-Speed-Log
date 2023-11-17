@@ -6,3 +6,5 @@
 !ВДАННЫЙ МОМЕНТ ПРОЭКТ В ПРОЦЕЕСЕ СОЗДАНИЯ!
 За основу взят проэкт с сайта https://www.holdentechnology.com/
 
+Схема подключения
+![Screenshot](screen.png)
