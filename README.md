@@ -1,2 +1,8 @@
 # RC-Boat-Speed-Log
-Boat Speed log for measuring speed relative to water
+
+Здесь представлен проект создпния лага, для измерения скорсти модели относительно воды(STW).
+
+
+!ВДАННЫЙ МОМЕНТ ПРОЭКТ В ПРОЦЕЕСЕ СОЗДАНИЯ!
+За основу взят проэкт с сайта https://www.holdentechnology.com/
+
