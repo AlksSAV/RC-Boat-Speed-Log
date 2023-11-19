@@ -21,5 +21,5 @@ There is a project in arduino, I need to calculate the coefficients for these im
 ![Screenshot](screen.png)
 
 ## Корпус и импеллер \ Housing and impeller
-![Screenshot](body.png)
+![Screenshot](Body.png)
 ![Screenshot](impeller.png)
