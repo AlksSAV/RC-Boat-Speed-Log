@@ -12,6 +12,7 @@ There is a project in arduino, I need to calculate the coefficients for these im
 -------------------------------------------------------------------------------------------------
 
 ## Компоненты\Component:
+
  - Ардуино\Arduino                      
  - Резистор 10K \ Resistance 10K                   
  - Датчик Холла \ Hall sensor 
@@ -22,4 +23,3 @@ There is a project in arduino, I need to calculate the coefficients for these im
 
 ## Корпус и импеллер \ Housing and impeller
 ![Screenshot](Body.png)
-![Screenshot](impeller.png)
