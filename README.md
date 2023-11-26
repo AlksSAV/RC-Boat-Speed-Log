@@ -3,9 +3,8 @@
  ⚠️**ВДАННЫЙ МОМЕНТ ПРОЭКТ В ПРОЦЕЕСЕ СОЗДАНИЯ**⚠️\
  ⚠️**AT THE MOMENT, THE PROJECT IS IN THE PROCESS OF BEING CREATED**⚠️
 
-Проект создания лага, для измерения скорсти модели(RC) относительно воды(STW).\
-Project for creating a log for measuring speed trought water (STW).
-
+Проект по  созданию морского лага, для измерения скорсти модели относительно воды.\
+A project to create a sea log to measure the speed of the model through water.
 
 ## Компоненты\Component:
 
@@ -18,5 +17,10 @@ Project for creating a log for measuring speed trought water (STW).
 ![Screenshot](screen.png)
 
 ## Корпус \ Housing 
-
 ![Screenshot](Body.png)
+
+## Credits 
+Thanks to these people for their help
+| Name              | Their contribution to:|
+| ----------------- | --------------------- |
+| Maxim Ivanov      | 3D Model              |
