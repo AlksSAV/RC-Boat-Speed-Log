@@ -23,7 +23,7 @@ float kmi_per_pulse;         // nautical miles per pulse (airmar spec is 1/20e3)
 float speed_scale;           // scale factor for calibration.  Multiplies kmi_per_pulse
 float speed_raw = 0;         // unfiltered speed
 float speed_filt = 0;        // low-pass filtered speed
-float a_filt;// filter pole radians/sec.  time constant = 1/a seconds
+float a_filt;                // filter pole radians/sec.  time constant = 1/a seconds
 float adt = 0;
 long dt_update = 0; //
 unsigned long last_update_time;
@@ -52,10 +52,10 @@ int ii,jj;
 struct save_t
 {
     unsigned int checkcode;
-    long baud; // baud rate
+    long baud;                          // baud rate
     float kmi_per_pulse;                // this should be in eeprom later for calibration
     float speed_scale;                  // scale factor for calibration.
-    float a_filt;// filter pole radians/sec.  time constant = 1/a seconds
+    float a_filt;                       // filter pole radians/sec.  time constant = 1/a seconds
     float dt_print;                     // s between output strings
 } saved;
 
@@ -131,7 +131,7 @@ void setup()   {
 //0x05 30.517578125  32.768 ms 5.4932 kt
 //TCCR1B = TCCR1B & 0b11111000 | 0x05; // xx Hz PWM
 //analogWrite(10,127); // pwm signal for testing on pin 10
-  tone(10,35); // kt is Hz*0.18000 with original calibration.  35Hz = 6.3kt 
+  tone(10,35);                // kt is Hz*0.18000 with original calibration.  35Hz = 6.3kt 
   calibration(); 
   attachInterrupt(1,falling_edge,FALLING); // catch falling edge and handle with falling_edge();
 }
@@ -366,7 +366,6 @@ void loop()
   //7. Kilometers (speed of vessel relative to the water)
   //8. K = Kilometers
   //9. Checksum
-
  
    if (millis() > print_time)
   {
