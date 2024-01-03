@@ -1,8 +1,8 @@
-
 #include <EEPROM.h>
 
 // Hardware:
 // Pin 10 creates a pulse for testing too
+
 int pulsePin =  3;    // Pulse connected to this digital pin
 int LEDPin = 13;      // there should be an LED on 13 already
 
@@ -13,13 +13,12 @@ long baud;
 // if you don't want to use the calibration routines
 // the calibration routines can be used to update these without reprogramming
 #define DEFAULT_BAUD 4800
-#define DEFAULT_KMI_PER_PULSE (1./20000.)   // nautical miles per pulse (Airmar says 1/20e3)
+#define DEFAULT_KMI_PER_PULSE (1./20000.)   // nautical miles per pulse (the coefficient will need to be selected!)
 #define DEFAULT_SPEED_SCALE 1.00            // scale factor for calibration. (multiplies kmi_per_pulse)
 #define DEFAULT_A_FILT 1                    // filter pole radians/sec.  time constant = 1/a seconds
 #define DEFAULT_DT_PRINT 1                  // s between output strings    
-
 // speed calcs
-float kmi_per_pulse;         // nautical miles per pulse (airmar spec is 1/20e3)
+float kmi_per_pulse;         // nautical miles per pulse (now is 1/20e3)
 float speed_scale;           // scale factor for calibration.  Multiplies kmi_per_pulse
 float speed_raw = 0;         // unfiltered speed
 float speed_filt = 0;        // low-pass filtered speed
@@ -89,7 +88,7 @@ void setup()   {
   // handle no eeprom here
   {
       baud = DEFAULT_BAUD;
-      kmi_per_pulse = DEFAULT_KMI_PER_PULSE;          // nautical miles per pulse (Airmar says 1/20e3)
+      kmi_per_pulse = DEFAULT_KMI_PER_PULSE;          // nautical miles per pulse (now 1/20e3)
       speed_scale = DEFAULT_SPEED_SCALE;              // scale factor for calibration. (multiplies kmi_per_pulse)
       a_filt = DEFAULT_A_FILT;                        // filter pole radians/sec.  time constant = 1/a seconds
       dt_print = DEFAULT_DT_PRINT;                    // s between output strings    
@@ -97,8 +96,8 @@ void setup()   {
   dt_char= 20000/(float)baud;                         // ms between output characters; minimum ~10/baud*1000
   Serial.begin(baud);
   Serial.println("\n\r-----------------------------");
-  Serial.println("  SHIP SPEEDLOG");
-  Serial.println("  NMEA0183 LOG++");
+  Serial.println("NMEA Water speed sensor");
+  Serial.println("  SPEEDLOG++");
   Serial.println("-----------------------------\n\r");
 
   if (saved.checkcode == 0x1234)
@@ -268,8 +267,7 @@ void calibration(void)
       }
       print_time = 0;  // exit loop sooner
     }
-  }
-  
+  } 
 }
 void falling_edge(void)
 // what to do on a falling edge
@@ -294,15 +292,13 @@ void checkpulse(void)
   {
     lastpin = 1;
     digitalWrite(LEDPin, LOW);
-  }
-  
+  } 
 }  
 // the loop() method runs over and over again,
 // as long as the Arduino has power
 void loop()                     
 {
     //
-  
  // checkpulse();
   
   // if it's been too long, fake some 0 kt data
@@ -311,7 +307,6 @@ void loop()
     dtpulse = (long)(kmi_per_pulse/.001*3.60e9*speed_scale);          // should give 0.001 kt
     gotdata = 1;
   }    
-  
   // when done timing, do filtering
   // the millis timer overflows after 50 days.
   // This will give some spurious data, which will take a few time constants to filter out.
@@ -347,29 +342,9 @@ void loop()
       jj++;
     }
   }
-  // Print NMEA sentence.
-  // periodically send the string 
-  // $VWVHW,,T,,M,4.14,N,7.65,K*51 (heading true) (heading mag) (speed knts) (speed KPH)
-  // === VHW - Water speed and heading ===
-  //------------------------------------------------------------------------------
-  //        1   2 3   4 5   6 7   8 9
-  //        |   | |   | |   | |   | |
-  // $--VHW,x.x,T,x.x,M,x.x,N,x.x,K*hh<CR><LF>
-  //------------------------------------------------------------------------------
-  //Field Number: 
-  //1. Degress True
-  //2. T = True
-  //3. Degrees Magnetic
-  //4. M = Magnetic
-  //5. Knots (speed of vessel relative to the water)
-  //6. N = Knots
-  //7. Kilometers (speed of vessel relative to the water)
-  //8. K = Kilometers
-  //9. Checksum
  
    if (millis() > print_time)
-  {
-    
+  {    
     if (millis() > char_time)
     {
       if (nmeastring[ii]==0)
