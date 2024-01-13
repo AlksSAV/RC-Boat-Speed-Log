@@ -13,7 +13,7 @@ long baud;
 // if you don't want to use the calibration routines
 // the calibration routines can be used to update these without reprogramming
 #define DEFAULT_BAUD 4800
-#define DEFAULT_KMI_PER_PULSE (1./20000.)   // nautical miles per pulse (the coefficient will need to be selected!)
+#define DEFAULT_KMI_PER_PULSE (1./29470.)   // nautical miles per pulse (the coefficient will need to be selected!)
 #define DEFAULT_SPEED_SCALE 1.00            // scale factor for calibration. (multiplies kmi_per_pulse)
 #define DEFAULT_A_FILT 1                    // filter pole radians/sec.  time constant = 1/a seconds
 #define DEFAULT_DT_PRINT 1                  // s between output strings    
