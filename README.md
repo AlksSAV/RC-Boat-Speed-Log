@@ -1,15 +1,33 @@
 # RC-Boat-Speed-Log
 
-Проект по созданию морского лага, для измерения скорсти модели относительно воды. \
-A project to create a sea log to measure the speed of the model through water.
+This project  takes the pulse from a paddlewheel boat speed sensor and makes an NMEA output on the serial port. With the help of this project, it is possible to measure the speed on both RC models (ArduPilot) and yachts.
 
- - On power-up the microcontroller waits for a +++ sequence for a few seconds, if it receives it, it enters a **calibration mode** so you can change things like the filter pole and the number of pulses per mile. To **test** the unit: If you wire the output pin to the input pin you should get around 6.3 knots. The input would normally be connected to a signal that is either a TTL pulse signal (0-5 Volts square wave).
+ - On power-up the microcontroller waits for a +++ sequence for a few seconds, if it receives it, it enters a **calibration mode** so you can change things like the filter pole and the number of pulses per mile.
+ - To **test** the unit: If you wire the output pin to the input pin you should get around 6.3 knots.
+ - The number of pulses per mile is calculated from the linear velocity formula =>  **V=2𝝅Rn** Since the radius of my paddle wheel is 0.01m, the formula implies about 29470 pulses. If you have another one, then count it. You can set it more accurately in calibration mode.
 
-- Коэффициент в скетче расчитан изходя из размеров "колеса"(один импульс на оборот колеса). Необходимо ввести количество импульсов на скорость в один узел. V=2𝝅Rn (линейная скорость).
 
-- отключить фильтр(при резкой остановке колеса скорость не будет ноль) 
+## Component(Aliexpress):
 
- В разделе кода фильтра:
+ - Arduino pro mini         https://megabonus.com/y/8VERw                     
+ - Resistance 10K           https://megabonus.com/y/9BL1f                 
+ - Hall sensor              https://megabonus.com/y/bH1Aw
+ - Maget 3x6mm              https://megabonus.com/y/RYdcj
+
+##  Circuit diagram 
+  -  input pin #3
+  -  test pin #10
+
+
+![Screenshot](screen.png)
+
+## Корпус \ Housing 
+![Screenshot](Body.png)
+
+## Other
+- turn off the filter (if the wheel stops abruptly, the speed will not be zero)
+
+In the filter code section:
 
     adt = a_filt*(float)dt_update*1.0e-6;
     if (adt < 1.0)
@@ -19,18 +37,5 @@ A project to create a sea log to measure the speed of the model through water.
       speed_filt = speed_raw; 
     }  
     
-Заменить на:
+Replace with:
      speed_filt = speed_raw;
-
-## Компоненты\Component(Aliexpress):
-
- - Ардуино        Arduino Uno\Pro etc.     https://megabonus.com/y/8VERw                     
- - Резистор 10K   Resistance 10K           https://megabonus.com/y/9BL1f                 
- - Датчик Холла   Hall sensor              https://megabonus.com/y/bH1Aw
-
-## Схема подключения \ Circuit diagram 
-
-![Screenshot](screen.png)
-
-## Корпус \ Housing 
-![Screenshot](Body.png)
