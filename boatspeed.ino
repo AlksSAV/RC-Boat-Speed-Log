@@ -13,12 +13,12 @@ long baud;
 // if you don't want to use the calibration routines
 // the calibration routines can be used to update these without reprogramming
 #define DEFAULT_BAUD 4800
-#define DEFAULT_KMI_PER_PULSE (1./29470.)   // nautical miles per pulse (the coefficient will need to be selected!)
+#define DEFAULT_KMI_PER_PULSE (1./29470.)   // nautical miles per pulse ()
 #define DEFAULT_SPEED_SCALE 1.00            // scale factor for calibration. (multiplies kmi_per_pulse)
 #define DEFAULT_A_FILT 1                    // filter pole radians/sec.  time constant = 1/a seconds
 #define DEFAULT_DT_PRINT 1                  // s between output strings    
 // speed calcs
-float kmi_per_pulse;         // nautical miles per pulse (now is 1/20e3)
+float kmi_per_pulse;         // nautical miles per pulse (now is 1/29470)
 float speed_scale;           // scale factor for calibration.  Multiplies kmi_per_pulse
 float speed_raw = 0;         // unfiltered speed
 float speed_filt = 0;        // low-pass filtered speed
@@ -88,7 +88,7 @@ void setup()   {
   // handle no eeprom here
   {
       baud = DEFAULT_BAUD;
-      kmi_per_pulse = DEFAULT_KMI_PER_PULSE;          // nautical miles per pulse (now 1/20e3)
+      kmi_per_pulse = DEFAULT_KMI_PER_PULSE;          // nautical miles per pulse (now 1/29470)
       speed_scale = DEFAULT_SPEED_SCALE;              // scale factor for calibration. (multiplies kmi_per_pulse)
       a_filt = DEFAULT_A_FILT;                        // filter pole radians/sec.  time constant = 1/a seconds
       dt_print = DEFAULT_DT_PRINT;                    // s between output strings    
@@ -97,7 +97,7 @@ void setup()   {
   Serial.begin(baud);
   Serial.println("\n\r-----------------------------");
   Serial.println("NMEA Water speed sensor");
-  Serial.println("  SPEEDLOG++");
+  Serial.println("       SPEEDLOG++      ");
   Serial.println("-----------------------------\n\r");
 
   if (saved.checkcode == 0x1234)
@@ -165,7 +165,7 @@ void calibration(void)
       if (ii=='+')
       {
         baud = DEFAULT_BAUD;
-        kmi_per_pulse = DEFAULT_KMI_PER_PULSE;        // nautical miles per pulse (Airmar says 1/20e3)
+        kmi_per_pulse = DEFAULT_KMI_PER_PULSE;        // nautical miles per pulse
         speed_scale = DEFAULT_SPEED_SCALE;            // scale factor for calibration. (multiplies kmi_per_pulse)
         a_filt = DEFAULT_A_FILT;                      // filter pole radians/sec.  time constant = 1/a seconds
         dt_print = DEFAULT_DT_PRINT;                  // s between output strings    
@@ -257,7 +257,7 @@ void calibration(void)
         {
           saved.checkcode = 0x1234;
           saved.baud = baud;
-          saved.kmi_per_pulse = kmi_per_pulse;      // nautical miles per pulse (Airmar says 1/20e3)
+          saved.kmi_per_pulse = kmi_per_pulse;      // nautical miles per pulse
           saved.speed_scale = speed_scale;          // scale factor for calibration. (multiplies kmi_per_pulse)
           saved.a_filt = a_filt;                    // filter pole radians/sec.  time constant = 1/a seconds
           saved.dt_print = dt_print;
