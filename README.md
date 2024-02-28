@@ -25,7 +25,7 @@ This project  takes the pulse from a paddlewheel boat speed sensor and makes an 
 ![Screenshot](Body.png)
 
 ## Other
-- Video with an example of the work (in Russian) https://youtu.be/kaW0D6W_o_4
+- Video with an example of the work (in Russian) https://youtu.be/kaW0D6W_o_4 and https://youtu.be/mz4kHh7z7gc?si=enzOc4zvbyHXF1JW
 
 - turn off the filter (if the wheel stops abruptly, the speed will not be zero)
 
