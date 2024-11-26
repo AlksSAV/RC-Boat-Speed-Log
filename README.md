@@ -9,15 +9,14 @@ This project  takes the pulse from a paddlewheel boat speed sensor and makes an 
 
 ## Component(Aliexpress):
 
- - Arduino pro mini         https://megabonus.com/y/8VERw                     
- - Resistance 10K           https://megabonus.com/y/9BL1f                 
- - Hall sensor              https://megabonus.com/y/bH1Aw
- - Maget 3x6mm              https://megabonus.com/y/RYdcj
+ - Arduino pro mini                    
+ - Resistance 10K                           
+ - Hall sensor             
+ - Maget 3x6mm              
 
 ##  Circuit diagram 
   -  input pin #3
   -  test pin #10
-
 
 ![Screenshot](screen.png)
 
@@ -25,7 +24,7 @@ This project  takes the pulse from a paddlewheel boat speed sensor and makes an 
 ![Screenshot](Body.png)
 
 ## Other
-- Video with an example of the work (in Russian) https://youtu.be/kaW0D6W_o_4 and https://youtu.be/mz4kHh7z7gc?si=enzOc4zvbyHXF1JW
+- Video with an example of the work (in Russian) https://youtu.be/kaW0D6W_o_4
 
 - turn off the filter (if the wheel stops abruptly, the speed will not be zero)
 
